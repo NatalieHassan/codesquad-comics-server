@@ -8,6 +8,7 @@ const app = express();
 
 // Import routes
 const bookRoutes = require('./routes/bookRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 //Set the port to 3000 or the value of the PORT environment variable
 const PORT = 8080;
@@ -25,8 +26,9 @@ app.get("/", (req, res, next) => {
   res.status(200).json({ success: { message: "This route points to the Home page" } });
 });
 
-// Use book routes
+// Use routes
 app.use('/api/books', bookRoutes);
+app.use('/auth', authRoutes);
 
 //use app.listen() to start the server and send a console.log to the terminal with a start message
 app.listen(PORT, () => {
